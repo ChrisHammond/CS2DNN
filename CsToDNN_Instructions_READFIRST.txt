@@ -1,0 +1,33 @@
+Community Server to DNN Conversion Steps.
+
+These scripts currently work for CS 2.1 Forums to DNN Forum 5.0, they haven't been tested for earlier or later versions of either product. These scripts don't handle blogs, photo galleries or files managed by CommunityServer.
+
+Assumptions before you begin: 
+	a. You already have a clean install of DotNetNuke running, with Forum 5.0.0 installed. 
+	b. If you want to run this on a production site you already have running on DNN you will likely need to perform more data work than these scripts provide. 
+	c. These scripts assume you are starting with a fresh install of DNN with only a Host and Admin account. 
+	d. If you have an Admin account it will be renamed to Admin2
+	e. It is also assumed that you are running DotNetNuke with the standard DataBase Owner of dbo, and an empty ObjectQualifier.
+	f. You have access to the MachineKeys in the CommunityServer web.config, you will put these in the DNN web.config in order to use the CommunityServer passwords in DNN.
+	g. Any users already in your DotNetNuke database will have their passwords changed to clear text and a default of "dnnpassword"
+
+BACKUP EVERYTHING BEFORE YOU START. You are responsible for any troubles you run into, not me :)
+
+1. Make sure that the CommunityServer database (SOURCEDB in the scripts) is restored on the same database server as the DNN database
+2. Backup the DNN database (TARGETDB in the scripts) before attempting import process
+3. Open Conversion Scripts (CsToDNN_1.sql, CsToDNN_2.sql, CsToDNN_3.sql) 
+	a. Rename SOURCEDB in all three scripts (search/replace SOURCEDB with your CommunityServer DB name)
+	b. Rename TARGETDB in all three scripts (search/replace TARGETDB with your DNN DB name)
+	c. Search and replace MODULEID with the ModuleId of your Forum module. To find this, go to the Module Settings for the module on your page and see what Module id is in the URL. On a fresh install it is likely somewhere around 380 or 382.
+	d. If you are using a PortalID other than 0 you need to change the PortalID reference in each script
+	e. Rename admin@change.me to a valid email address, this is the email that Forum notifications will come from
+	f. Rename WEBSITENAME to something else, this is the Name that email notifications will come from
+4. In SQL Management studio, open a query window. 
+5. Change query results to FILE instead of GRID (this will save you headache later, and will likely make the REPLIES script run faster)
+6. Execute CsToDNN_1.sql (point to an output FILE of your choice, I usually call this one users and put it on the desktop).This should take a couple minutes or less for a site with around 40k users.
+7. Execute CsToDNN_2.sql, this will take longer than the first script, 15-30 minutes is common.
+8. Execute CsToDNN_3.sql, this will take longer than the first two scripts, 5-6 hours, maybe more.
+9. Copy the CommunityServer MachineKeys from the web.config file, replace the DNN web.config machine keys.
+10. You should now be able to login to your DNN site and see all the forums, threads, replies and users.
+11. You should go through your forums and set all the appropriate permissions
+12. You should change the passwords for the users who were already in your DNN database
