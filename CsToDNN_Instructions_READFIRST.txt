@@ -18,7 +18,7 @@ BACKUP EVERYTHING BEFORE YOU START. You are responsible for any troubles you run
 3. Open Conversion Scripts (CsToDNN_1.sql, CsToDNN_2.sql, CsToDNN_3.sql) 
 	a. Rename SOURCEDB in all three scripts (search/replace SOURCEDB with your CommunityServer DB name)
 	b. Rename TARGETDB in all three scripts (search/replace TARGETDB with your DNN DB name)
-	c. Search and replace MODULEID with the ModuleId of your Forum module. To find this, go to the Module Settings for the module on your page and see what Module id is in the URL. On a fresh install it is likely somewhere around 380 or 382.
+	c. Search and replace forumMODULEID with the ModuleId of your Forum module. To find this, go to the Module Settings for the module on your page and see what Module id is in the URL. On a fresh install it is likely somewhere around 381.
 	d. If you are using a PortalID other than 0 you need to change the PortalID reference in each script
 	e. Rename admin@change.me to a valid email address, this is the email that Forum notifications will come from
 	f. Rename WEBSITENAME to something else, this is the Name that email notifications will come from
