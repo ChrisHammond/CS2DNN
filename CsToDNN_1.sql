@@ -5,7 +5,7 @@
 /* the following steps should use a find/replace on all of the included SQL scripts */
 /* change source database name (currently SOURCEDB) */
 /* change target database name (currently TARGETDB) */
-/* change moduleid to the ID of the main forums module installed on your DNN site (currently MODULEID) */
+/* change forumMODULEID to the ID of the main forums module installed on your DNN site (currently forumMODULEID) */
 /* change registered users role if necessary (currently 1) */
 /* change portalid if necessary (currently 0) */
 /* change admin@change.me to a valid email address for your website, this is the email address used for forum notifications */
@@ -145,7 +145,7 @@ set @registereduserrole = 1
 
 
 declare @moduleid int
-set @moduleid = MODULEID
+set @moduleid = forumMODULEID
 
 
 /* get users from CS aspnet_users table into DNN aspnet_users table */
