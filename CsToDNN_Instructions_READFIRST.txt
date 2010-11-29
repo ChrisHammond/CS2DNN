@@ -28,6 +28,7 @@ BACKUP EVERYTHING BEFORE YOU START. You are responsible for any troubles you run
 7. Execute CsToDNN_2.sql, this will take longer than the first script, 15-30 minutes is common.
 8. Execute CsToDNN_3.sql, this will take longer than the first two scripts, 5-6 hours, maybe more.
 9. Copy the CommunityServer MachineKeys from the web.config file, replace the DNN web.config machine keys.
-10. You should now be able to login to your DNN site and see all the forums, threads, replies and users.
-11. You should go through your forums and set all the appropriate permissions
-12. You should change the passwords for the users who were already in your DNN database
+10. If your CommunityServer was using Hashed instead of Encrypted passwords you should change the PasswordFormat setting in the web.config
+11. You should now be able to login to your DNN site and see all the forums, threads, replies and users.
+12. You should go through your forums and set all the appropriate permissions
+13. You should change the passwords for the users who were already in your DNN database
