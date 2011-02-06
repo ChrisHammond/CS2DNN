@@ -29,10 +29,10 @@ select @RowMax = count(*) from cs_posts
 	where sectionid in (select sectionid from cs_sections cs where groupid in (select groupid from cs_groups where applicationtype=0))
 	and postlevel=1
 
---PRINT '--truncate cs_forum_merge'
+--PRINT '--truncate cs_forums_topics'
 truncate table [TARGETDB].dbo.[cs_forums_topics]
 
---PRINT '--update the cs_forum_merge table with old postids'
+--PRINT '--update the cs_forums_topics table with old postids'
 insert into [TARGETDB].dbo.[cs_forums_topics]
 (threadid, postid, parentid, topicid, postlevel)
 (select cp.threadid, cp.postid, cp.parentid, null, cp.postlevel from cs_posts cp where sectionid in 
