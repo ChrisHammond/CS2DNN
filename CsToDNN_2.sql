@@ -58,7 +58,7 @@ where postlevel = 1
 	declare @dateupdated datetime
 	declare @authorid int
 	declare @authorname nvarchar(150)
-	declare @ipaddress nvarchar(5)
+	declare @ipaddress nvarchar(32)
 	declare @forumid int
 	declare @viewcount int
 
