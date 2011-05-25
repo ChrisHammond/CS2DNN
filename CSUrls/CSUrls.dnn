@@ -1,0 +1,63 @@
+<dotnetnuke type="Package" version="5.0">
+  <packages>
+    <package name="CSUrls" type="Module" version="00.00.01">
+      <friendlyName>CSUrls</friendlyName>
+      <description>An HTTPModule to handle Community Server urls, redirecting them to DotNetNuke</description>
+      <owner>
+        <name>Christoc.com</name>
+        <organization>Christoc.com</organization>
+        <url>http://www.christoc.com</url>
+        <email>modules@christoc.com</email>
+      </owner>
+      <license>
+/*
+' Copyright (c) 2011  Christoc.com
+'  All rights reserved.
+' 
+' THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+' TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+' THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+' CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+' DEALINGS IN THE SOFTWARE.
+' 
+*/
+      </license>
+      <releaseNotes>
+	    Initial release, not fully functional yet, still requires some manual config
+      </releaseNotes>
+      <components>        
+        <component type="Assembly">
+          <assemblies>
+            <basePath>bin</basePath>
+            <assembly>
+              <name>CSUrls.dll</name>
+            </assembly>
+          </assemblies>
+        </component>
+
+        <component type="Config">
+          <config>
+            <configFile>web.config</configFile>
+            <install>
+              <configuration>
+                <nodes>
+                  <node path="/configuration/system.web/httpmodules" action="update" key="name" collision="overwrite">
+                    <add name="CSUrls" type="com.christoc.modules.CSUrls.Components.HttpModule, CSUrls" />
+                  </node>
+                  <node path="/configuration/system.webServer/modules" action="update" key="name" collision="overwrite">
+                    <add name="CSUrls" type="com.christoc.modules.CSUrls.Components.HttpModule, CSUrls" preCondition="managedHandler" />
+                  </node>
+                </nodes>
+              </configuration>
+            </install>
+            <uninstall>
+              <configuration>
+                <nodes />
+              </configuration>
+            </uninstall>
+          </config>
+        </component>
+      </components>
+    </package>
+  </packages>
+</dotnetnuke>
