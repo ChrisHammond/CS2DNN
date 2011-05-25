@@ -17,7 +17,6 @@ namespace com.christoc.modules.CSUrls.Components
     {
         //TODO: fix connection string
         private readonly string _connectionString = Config.GetConnectionString();
-        //"Data Source=(local);Initial Catalog=sccaforums-test;User ID=sccaforums;Password=Chris1";
 
         ///<summary>
         /// Set the portalid, taking the current request and locating which portal is being called based on this request.
