@@ -1,6 +1,6 @@
 <dotnetnuke type="Package" version="5.0">
   <packages>
-    <package name="CSUrls" type="Module" version="00.00.01">
+    <package name="CSUrls" type="Module" version="00.00.03">
       <friendlyName>CSUrls</friendlyName>
       <description>An HTTPModule to handle Community Server urls, redirecting them to DotNetNuke</description>
       <owner>
